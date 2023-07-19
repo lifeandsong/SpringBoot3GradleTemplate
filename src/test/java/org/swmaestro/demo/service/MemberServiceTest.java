@@ -1,33 +1,39 @@
 package org.swmaestro.demo.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
-import org.swmaestro.demo.mapper.MemberMapper;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.swmaestro.demo.model.Member;
-import org.swmaestro.demo.util.Sha512Encryptor;
+import org.swmaestro.demo.model.MemberCase;
 
+@ExtendWith(MockitoExtension.class)
+@Slf4j
 class MemberServiceTest {
 
     @Mock
-    private MemberMapper memberMapper;
-
-    @Spy
-    @InjectMocks
     private MemberService memberService;
+
+    private Member param;
+    private Member testMember;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
+
+        MemberCase userCase = new MemberCase();
+        param = userCase.getParam();
+        testMember = userCase.getTestCase();
+        log.info("param={}, testMember={}", param, testMember);
     }
 
 //    @Test
@@ -38,19 +44,15 @@ class MemberServiceTest {
     @DisplayName("회원 1명의 정보 조회 테스트")
     void read() {
 
-        String testId = "test";
-
         // given
-        Member givenMember = memberMapper.read(testId);
-        Member testMember = getTestMember();
+        Member givenMember = memberService.read(param);
         given(givenMember).willReturn(testMember);
 
         // when
-        Member whenMember = memberService.read(testId);
+        Member whenMember = memberService.read(param);
 
         // then
-        then(memberMapper).should().read(testId);
-        then(memberService).should().read(testId);
+        then(memberService).should().read(param);
 
         Assertions.assertThat(whenMember.getId()).isEqualTo(testMember.getId());
         Assertions.assertThat(whenMember.getPassword()).isEqualTo(testMember.getPassword());
@@ -70,18 +72,5 @@ class MemberServiceTest {
 //    @Test
 //    void delete() {
 //    }
-
-    private Member getTestMember() {
-        Sha512Encryptor sha512 = new Sha512Encryptor();
-        String password = sha512.encrypt("test1234");
-
-        Member member = new Member();
-        member.setId("test");
-        member.setPassword(password);
-        member.setName("테스터");
-        member.setEmail("test@company.com");
-        member.setPhone("010-2345-6789");
-        return member;
-    }
 
 }

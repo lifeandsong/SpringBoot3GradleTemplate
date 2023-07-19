@@ -42,8 +42,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.mockito/mockito-core
 	testImplementation 'org.mockito:mockito-core:5.4.0'
 
-//	// https://mvnrepository.com/artifact/org.mockito/mockito-all
-//	testImplementation 'org.mockito:mockito-all:1.10.19'
+	// https://mvnrepository.com/artifact/org.mockito/mockito-all
+	testImplementation 'org.mockito:mockito-all:1.10.19'
 }
 
 tasks.named('test') {

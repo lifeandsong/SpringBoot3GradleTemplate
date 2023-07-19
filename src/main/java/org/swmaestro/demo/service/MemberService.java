@@ -47,13 +47,13 @@ public class MemberService extends BaseService {
         return createdCount;
     }
 
-    public Member read(String id) {
-        log.info("read; id={}", id);
+    public Member read(Member param) {
+        log.info("read; param={}", param);
 
         Member member = null;
 
         try {
-            member = memberMapper.read(id);
+            member = memberMapper.read(param);
         } catch(Exception e) {
             log.error(e.getMessage());
         }

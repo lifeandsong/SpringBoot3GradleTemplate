@@ -12,10 +12,10 @@
             (#{id}, #{password}, #{name}, #{email}, #{phone}, #{creator}, #{updater})
     </insert>
 
-    <select id="read" parameterType="string" resultType="Member">
+    <select id="read" parameterType="Member" resultType="Member">
         SELECT id, name, email, phone, used, creator, createdAt, updater, updatedAt
             FROM Member
-            WHERE id = #{id}
+            WHERE id = #{member.id}
     </select>
 
     <select id="list" parameterType="Member" resultType="Member">

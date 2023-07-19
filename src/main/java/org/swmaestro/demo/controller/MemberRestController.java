@@ -69,7 +69,11 @@ public class MemberRestController extends BaseRestController {
         }
 
         // 2. Business Logic
-        Member member = memberService.read(id);
+        Member param = new Member();
+        param.setId(id);
+        log.info("param={}", param);
+
+        Member member = memberService.read(param);
         if (member == null) {
             log.warn("Fail to read a member; member=null");
             return ResponseEntity.badRequest().build();

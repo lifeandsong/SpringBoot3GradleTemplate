@@ -4,24 +4,35 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.swmaestro.demo.model.Member;
-import org.swmaestro.demo.util.Sha512Encryptor;
+import org.swmaestro.demo.model.MemberCase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
+@ExtendWith(MockitoExtension.class)
 @Slf4j
 class MemberMapperTest {
 
     @Mock
     private MemberMapper memberMapper;
 
+    private Member param;
+    private Member testMember;
+
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
+
+        MemberCase memberCase = new MemberCase();
+        param = memberCase.getParam();
+        testMember = memberCase.getTestCase();
+        log.info("param={}, testMember={}", param, testMember);
     }
 
 //    @Test
@@ -31,31 +42,27 @@ class MemberMapperTest {
 //    }
 
     @Test
-    @DisplayName("Member 1명 정보 조회")
+    @DisplayName("Member 1명 정보 조회 테스트")
     void read() {
 
         // given
-        String testId = "test";
-        Member givenMember = memberMapper.read(testId);
-        Member testMember = getTestMember();
+        Member givenMember = memberMapper.read(param);
         given(givenMember).willReturn(testMember);
 
         // when
-        Member whenMember = memberMapper.read(testId);
-
-        log.info("testMember={}", testMember);
+        Member whenMember = memberMapper.read(param);
         log.info("whenMember={}", whenMember);
 
         // then
-        then(memberMapper).should().read(testId);
-        assertThat(whenMember.getId()).isEqualTo(testId);
+        then(memberMapper).should().read(param);
+        assertThat(whenMember.getId()).isEqualTo(param.getId());
         assertThat(whenMember.getPassword()).isEqualTo(testMember.getPassword());
         assertThat(whenMember.getName()).isEqualTo(testMember.getName());
         assertThat(whenMember.getEmail()).isEqualTo(testMember.getEmail());
         assertThat(whenMember.getPhone()).isEqualTo(testMember.getPhone());
     }
 
-    @Test
+//    @Test
 //    void list() {
 //    }
 //
@@ -66,18 +73,5 @@ class MemberMapperTest {
 //    @Test
 //    void delete() {
 //    }
-
-    private Member getTestMember() {
-        Sha512Encryptor sha512 = new Sha512Encryptor();
-        String password = sha512.encrypt("test1234");
-
-        Member member = new Member();
-        member.setId("test");
-        member.setPassword(password);
-        member.setName("테스터");
-        member.setEmail("test@company.com");
-        member.setPhone("010-2345-6789");
-        return member;
-    }
 
 }

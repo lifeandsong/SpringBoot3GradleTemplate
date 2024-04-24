@@ -1,5 +1,5 @@
 # 베이스 이미지 + 이미지 별칭
-FROM adoptopenjdk:11-jdk-hotspot AS builder
+FROM eclipse-temurin:17 AS builder
 
 # gradlew 복사
 COPY gradlew .
@@ -26,10 +26,10 @@ RUN ./gradlew bootJar
 FROM adoptopenjdk:11-jdk-hotspot
 
 # builder 이미지에서 build/libs/*.jar 파일을 fems.jar로 복사
-COPY --from=builder build/libs/*.jar SpringBootGradleTemplate.jar
+COPY --from=builder build/libs/*.jar SpringBoot3GradleTemplate.jar
 
 # 컨테이너 Port 노출
 EXPOSE 8080
 
 # jar 파일 실행
-ENTRYPOINT ["java", "-jar","/SpringBootGradleTemplate.jar"]
+ENTRYPOINT ["java", "-jar","/SpringBoot3GradleTemplate.jar"]

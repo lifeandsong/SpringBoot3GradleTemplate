@@ -50,14 +50,7 @@ public class MemberService extends BaseService {
     public Member read(Member param) {
         log.info("read; param={}", param);
 
-        Member member = null;
-
-        try {
-            member = memberMapper.read(param);
-        } catch(Exception e) {
-            log.error(e.getMessage());
-        }
-
+        Member member = memberMapper.read(param);
         if (member == null)
             member = new Member();
 

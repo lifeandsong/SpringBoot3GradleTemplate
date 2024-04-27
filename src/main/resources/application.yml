@@ -23,11 +23,11 @@ spring:
 #    enabled: false
 
 # Swagger
-#springdoc:
-#  api-docs:
-#    enabled: false
-#  swagger-ui:
-#    enabled: false
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
 
 # Logging
 logging.level:

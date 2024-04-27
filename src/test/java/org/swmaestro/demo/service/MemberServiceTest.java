@@ -45,14 +45,14 @@ class MemberServiceTest {
     void read() {
 
         // given
-        Member givenMember = memberService.read(param);
+        Member givenMember = memberService.read(param.getId());
         given(givenMember).willReturn(testMember);
 
         // when
-        Member whenMember = memberService.read(param);
+        Member whenMember = memberService.read(param.getId());
 
         // then
-        then(memberService).should().read(param);
+        then(memberService).should().read(param.getId());
 
         Assertions.assertThat(whenMember.getId()).isEqualTo(testMember.getId());
         Assertions.assertThat(whenMember.getPassword()).isEqualTo(testMember.getPassword());

@@ -1,5 +1,6 @@
 package org.swmaestro.demo.model;
 
+import org.swmaestro.demo.model.Member;
 import org.swmaestro.demo.util.Sha512Encryptor;
 
 public class MemberCase {

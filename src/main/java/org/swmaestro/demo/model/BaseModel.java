@@ -1,7 +1,6 @@
 package org.swmaestro.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
 import lombok.Data;
 
 import java.util.Date;

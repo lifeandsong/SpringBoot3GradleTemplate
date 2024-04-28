@@ -89,6 +89,26 @@ class MemberRestControllerTest {
     void delete() {
     }
 
+    @Test
+    void testCreate() {
+    }
+
+    @Test
+    void testRead() {
+    }
+
+    @Test
+    void testList1() {
+    }
+
+    @Test
+    void testUpdate() {
+    }
+
+    @Test
+    void testDelete() {
+    }
+
 //    @Test
 //    void update() {
 //    }

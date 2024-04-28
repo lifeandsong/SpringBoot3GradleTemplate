@@ -7,6 +7,5 @@
 
 ### Test codes
 
-* Mapper : /MemberMapperTest.java
 * Service : /MemberServiceTest.java
 * Controller : /MemberRestControllerTest.java

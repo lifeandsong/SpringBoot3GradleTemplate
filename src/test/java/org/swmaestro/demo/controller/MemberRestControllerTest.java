@@ -1,6 +1,8 @@
 package org.swmaestro.demo.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -57,6 +59,34 @@ class MemberRestControllerTest {
             .andExpect(jsonPath("$[0].id", notNullValue()))
             .andExpect(jsonPath("$.length()", greaterThan(0))) // equalsTo, lessThan
             .andDo(print());
+    }
+
+    @BeforeEach
+    void setUp() {
+    }
+
+    @AfterEach
+    void tearDown() {
+    }
+
+    @Test
+    void create() {
+    }
+
+    @Test
+    void read() {
+    }
+
+    @Test
+    void testList() {
+    }
+
+    @Test
+    void update() {
+    }
+
+    @Test
+    void delete() {
     }
 
 //    @Test

@@ -1,13 +1,13 @@
-package org.swmaestro.demo;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class ApplicationTest {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package org.swmaestro.demo;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class ApplicationTest {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}

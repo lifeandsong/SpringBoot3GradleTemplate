@@ -73,6 +73,7 @@ public class MemberRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id) {
         log.info("delete; id={}", id);

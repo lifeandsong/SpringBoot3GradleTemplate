@@ -23,7 +23,7 @@ RUN chmod +x ./gradlew
 RUN ./gradlew bootJar
 
 # 베이스 이미지
-FROM adoptopenjdk:11-jdk-hotspot
+FROM eclipse-temurin:17-jdk
 
 # builder 이미지에서 build/libs/*.jar 파일을 fems.jar로 복사
 COPY --from=builder build/libs/*.jar SpringBoot3GradleTemplate.jar

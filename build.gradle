@@ -7,10 +7,15 @@ plugins {
 
 group = 'org.swmaestro'
 version = '0.0.1-SNAPSHOT'
+//version = ''
 
 java {
 	sourceCompatibility = '17'
 }
+
+//jar {
+//	enabled = false
+//}
 
 configurations {
 	compileOnly {

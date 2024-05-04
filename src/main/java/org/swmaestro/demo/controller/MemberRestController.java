@@ -25,7 +25,7 @@ public class MemberRestController {
 
         Member member = memberService.create(param);
         log.info("member={}", member);
-        if (member != null)
+        if (member == null)
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
